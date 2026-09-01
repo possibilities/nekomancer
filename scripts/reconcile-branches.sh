@@ -41,9 +41,9 @@ case "$fork_name" in
     *) die "unknown fork '$fork_name': expected neko or kernel-images" ;;
 esac
 
-skill_dir="${MAINTAIN_SKILL_DIR:-$HOME/.local/share/agentstart/capabilities/packs/common/skills/maintain}"
+skill_dir="${MAINTAIN_SKILL_DIR:-$HOME/.local/share/agentstart/resources/skills/maintain}"
 script="$skill_dir/scripts/reconcile-branches.sh"
-[ -f "$script" ] || die "the maintain skill is not installed at $skill_dir (render ~/code/agentguidance, or set MAINTAIN_SKILL_DIR)"
+[ -f "$script" ] || die "the maintain skill is not installed at $skill_dir (run ~/code/agentstart/scripts/sync-skills, or set MAINTAIN_SKILL_DIR)"
 
 export MAINTAIN_WORKSHOP="$workshop"
 export MAINTAIN_FORK_REMOTE=fork
