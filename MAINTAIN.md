@@ -52,6 +52,23 @@ branch, because it has nothing to carry yet.
 them on the fork is safe today (neither has an upstream pull request), but
 `fix/xtest-scroll-fallback-units` is an offer candidate (below), and offers keep
 `fix/` names. Settle whether that one is an offer before renaming either.
+- Deletion marker prefix: `DELETEME/`. Creating, moving, or removing
+  `DELETEME/<original-name>` requires an explicit human decision naming that
+  branch. Maintenance never infers deletion from branch age, ownership,
+  request state, or namespace. Every undeclared fork head remains unchanged.
+- Open pull-request heads: validated. Reconciliation confirms the exact head
+  of each currently open request from the fork but does not acquire ownership
+  of the ref.
+- `scripts/reconcile-branches.sh` is this repository's entrypoint to the
+  shared branch script; it declares these values and nothing else.
+  Because this workshop binds two forks, its first argument selects one:
+  `reconcile-branches.sh <neko|kernel-images> [args...]`.
+- Supervision: `scripts/reconcile-branches.sh --configure-supervision`
+  converges this model into the bound checkout's own `supervisor.*` git
+  config, which is where advisory tools read it — `/tend` judges a worktree
+  against Integration and never proposes removing a carry head's worktree.
+  `--check-supervision` verifies that convergence and that this section still
+  names these branches. The config is derived state, not a second declaration.
 
 ## Features
 
