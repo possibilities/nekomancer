@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 2,
+  "note": "Two bound forks in an ordered delivery chain; see MAINTAIN.md.",
+  "forks": {
+    "neko": {
+      "fork": "possibilities/neko",
+      "upstream": "kernel/neko",
+      "checkout": "fork/neko",
+      "integrationCommit": "6babebd99e2a5f998c7ffd57de5d0cfc80aaba16",
+      "publishedIntegrationCommit": null,
+      "upstreamCommit": "148bc06bbd11173a4e8b826f0dbebe1fef7bcb98"
+    },
+    "kernel-images": {
+      "fork": "possibilities/kernel-images",
+      "upstream": "kernel/kernel-images",
+      "checkout": "fork/kernel-images",
+      "integrationCommit": null,
+      "publishedIntegrationCommit": "3be26fcbcdbed7e615d57217ee8db8f9dac00ee3",
+      "upstreamCommit": "edaff49f9793197c9e777369f7c154f6626e4e1b"
+    }
+  },
+  "consumer": {
+    "repository": "agentbrowse",
+    "pin": "config/kernel-headful.lock.json",
+    "currentKernelSourceCommit": "57858c774681c646c238043d5cb75a9ff61797c6",
+    "currentRuntimeReference": "docker.io/onkernel/chromium-headful@sha256:da9ee68cb9d2de0b3c26885ff3bdcf04c944254a36eb127219028ac017ff56f3"
+  },
+  "capturedAt": "2026-09-01T17:29:04Z"
+}
