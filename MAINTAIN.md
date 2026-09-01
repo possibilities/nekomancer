@@ -89,6 +89,37 @@ update on `carry/vendor-neko-integration`, or build the image locally from a
 patched tree and pin the digest without publishing a kernel-images branch. The
 first is reproducible from published refs; the second is fewer moving parts.
 
+## Gate
+
+Each fork gates independently, and the chain gates as a whole.
+
+**neko** — run verbatim from the candidate worktree:
+
+```sh
+cd server && go build ./... && go test ./...
+```
+
+This covers `pkg/xorg/scroll_units_test.go`, the test the XTest scroll carry
+brought with it. Note that `go` is not currently on this machine's PATH; the
+first cycle must resolve that before it can gate.
+
+**kernel-images** — the image must actually build:
+
+```sh
+images/chromium-headful/build-docker.sh
+```
+
+This is expensive. `agentbrowse-infra` records that an exact Kernel/Neko source
+build crossed a 12 GiB budget during OCI export, so the first cycle must decide
+whether the gate builds locally or pulls a published image and verifies its
+digest.
+
+**Chain proof** — a carry is not shipped until an image built from the vendored
+neko is pinned in `agentbrowse/config/kernel-headful.lock.json` and agentbrowse
+exercises the scroll path against it.
+
+**DECISION — unproven.** None of the above has been executed end to end.
+
 ## Consumer
 
 agentbrowse, at the end of the delivery chain:
