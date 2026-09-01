@@ -26,6 +26,11 @@ case "$fork_name" in
         export MAINTAIN_FORK_REPO=possibilities/neko
         export MAINTAIN_UPSTREAM_REPO=kernel/neko
         export MAINTAIN_MAIN_BRANCH=master
+        # Both carries were published before the naming convention, and
+        # renaming a published branch is a publication. Name them exactly
+        # rather than claiming the whole fix/ namespace, which belongs to
+        # upstream offers.
+        export MAINTAIN_CARRY_REFS="fix/xtest-scroll-fallback-units driver-sync-wip"
         ;;
     kernel-images)
         export MAINTAIN_CHECKOUT="${NEKOMANCER_KERNEL_IMAGES_CHECKOUT:-$workshop/fork/kernel-images}"
@@ -45,6 +50,7 @@ export MAINTAIN_FORK_REMOTE=fork
 export MAINTAIN_UPSTREAM_REMOTE=origin
 export MAINTAIN_INTEGRATION_BRANCH=integration
 export MAINTAIN_CARRY_PREFIX=carry/
+export MAINTAIN_WORKSHOP_CHECKOUTS="$workshop/fork/neko $workshop/fork/kernel-images"
 export MAINTAIN_QUARANTINE_PREFIX=DELETEME/
 export MAINTAIN_PRESERVE_OPEN_PRS=1
 

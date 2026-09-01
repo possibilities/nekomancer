@@ -69,6 +69,18 @@ them on the fork is safe today (neither has an upstream pull request), but
   against Integration and never proposes removing a carry head's worktree.
   `--check-supervision` verifies that convergence and that this section still
   names these branches. The config is derived state, not a second declaration.
+- Declared carry heads outside the prefix: `fix/xtest-scroll-fallback-units`
+  and `driver-sync-wip`. Both were published before this model existed. They
+  are declared as `supervisor.carryRef` exact names rather than by widening the
+  carry prefix to `fix/`, which belongs to upstream offers.
+- Declared to supervision: `scripts/reconcile-branches.sh
+  --configure-supervision` converges `supervisor.checkout` onto **this
+  workshop** — one absolute path per bound fork, multi-valued — so a tool that
+  discovers the workshop follows it to forks nested anywhere without walking
+  the filesystem. It converges `supervisor.carryPrefix` (multi-valued) and
+  `supervisor.carryRef` (multi-valued, exact branch names) onto each bound
+  checkout. A carry that predates the naming convention is named by ref rather
+  than renamed, because renaming a published branch is a publication.
 
 ## Features
 
